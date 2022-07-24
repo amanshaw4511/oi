@@ -1,6 +1,4 @@
-
-from typing import Any, List, Type
-from docopt import docopt
+from typing import List, Type
 import requests
 from bs4 import BeautifulSoup
 
@@ -26,10 +24,10 @@ def get_page(query: List[str]):
     return BeautifulSoup(response.content, 'html.parser')
 
 
-if __name__ == "__main__":
+def main():
     args = get_args()
     doc = get_page(args['<query>'])
-    print(doc.title)
+    # print(doc.title)
 
     clazz: List[Type[Selector]] = [BasicSelector, MathSelector, CurrencySelector, WebsiteResultSelector,
                                    WebsiteResultSelector2]
@@ -38,3 +36,7 @@ if __name__ == "__main__":
         selector = claz(doc)
         if selector.found():
             selector.display()
+
+
+if __name__ == "__main__":
+    main()
