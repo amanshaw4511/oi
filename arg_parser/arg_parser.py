@@ -1,13 +1,16 @@
 """
 Usage:
-    script_name.py [-a] [-b] <query>...
+    oi.py [-s SELECTOR] <query>...
+    oi.py --list-selectors
 
 Options:
-    -a            Print all the things.
-    -b            Get more bees into the path.
+    -s --selector SELECTOR  specify selector to apply
+    -l --list-selectors     list available selectors
 """
+
 from docopt import docopt
 
 
 def get_args():
+    print(docopt(__doc__))
     return docopt(__doc__)
