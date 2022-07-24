@@ -1,4 +1,4 @@
-from selector import Selector
+from .selector import Selector
 from bs4 import BeautifulSoup
 
 

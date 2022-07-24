@@ -1,2 +1,0 @@
-from basic_selector import Basic_selector
-from math_selector import Math_selector

@@ -29,7 +29,7 @@ def get_page(query: List[str]):
                             headers=headers
                             )
 
-    return BeautifulSoup(response.content, 'lxml')
+    return BeautifulSoup(response.content, 'html.parser')
 
 
 if __name__ == "__main__":
