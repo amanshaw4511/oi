@@ -8,9 +8,10 @@ Options:
     -l --list-selectors     list available selectors
 """
 
-from docopt import docopt
 from typing import cast
+
+from docopt import docopt
 
 
 def get_args():
-    return docopt(cast(str,__doc__))
+    return docopt(cast(str, __doc__))

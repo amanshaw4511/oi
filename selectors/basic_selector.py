@@ -1,9 +1,11 @@
-from .selector import Selector
 from bs4 import BeautifulSoup
+
+from .selector import Selector
 
 
 class BasicSelector(Selector):
     name = "basic"
+
     def __init__(self, doc: BeautifulSoup):
         self.selector = '.FLP8od'
         self.selected = doc.select(self.selector)

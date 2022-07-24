@@ -1,27 +1,28 @@
+import json
 import sys
-from typing import Iterable, List, Optional, Type, cast
+from typing import Iterable, List, Optional, Type
+
 import requests
 from bs4 import BeautifulSoup
-import json
-from config.config import Config
 
+from arg_parser.arg_parser import get_args
+from config.config import Config
 from selectors.basic_selector import BasicSelector
 from selectors.currency_selector import CurrencySelector
 from selectors.math_selector import MathSelector
 from selectors.selector import Selector
 from selectors.site_list_selector import WebsiteResultSelector2
 from selectors.site_selector import WebsiteResultSelector
-from arg_parser.arg_parser import get_args
 from utils.list import find_any
 from utils.termcolor import red, bold
 
 selector_classes: List[Type[Selector]] = [
-        BasicSelector,
-        MathSelector,
-        CurrencySelector,
-        WebsiteResultSelector,
-        WebsiteResultSelector2
-    ]
+    BasicSelector,
+    MathSelector,
+    CurrencySelector,
+    WebsiteResultSelector,
+    WebsiteResultSelector2
+]
 
 
 def get_page(query: List[str]):
@@ -40,7 +41,7 @@ def get_page(query: List[str]):
 def load_configs(config_path: str) -> Iterable[Config]:
     config_json = open(config_path).read()
     configs_dict = json.loads(config_json)
-    return map(lambda x : Config(x, selector_classes), configs_dict)
+    return map(lambda x: Config(x, selector_classes), configs_dict)
 
 
 def print_availabe_selectors(configs: Iterable[Config]):
@@ -62,13 +63,13 @@ def print_output_from_selector(doc: BeautifulSoup, selector_name: str) -> bool:
         return True
     return False
 
+
 def print_output_from_any_matched_selector(doc: BeautifulSoup):
     for selector_class in selector_classes:
         selector_obj = selector_class(doc)
         if selector_obj.found():
             selector_obj.display()
             return
-
 
 
 def main():
@@ -87,13 +88,11 @@ def main():
 
     if selector_name:
         flag = print_output_from_selector(doc, selector_name)
-        if flag :
+        if flag:
             return
 
     print_output_from_any_matched_selector(doc)
 
 
-
 if __name__ == "__main__":
     main()
-

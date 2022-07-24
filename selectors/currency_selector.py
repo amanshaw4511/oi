@@ -1,11 +1,12 @@
-from .selector import Selector
 from bs4 import BeautifulSoup
+
+from .selector import Selector
 
 
 class CurrencySelector(Selector):
     name = "currency"
 
-    def __init__(self, doc: BeautifulSoup) :
+    def __init__(self, doc: BeautifulSoup):
         self.selector = 'div.dDoNo.ikb4Bb.gsrt.GDBPqd'
         self.selected = doc.select(self.selector)
 
@@ -17,5 +18,3 @@ class CurrencySelector(Selector):
 
     def found(self) -> bool:
         return len(self.selected) != 0
-
-

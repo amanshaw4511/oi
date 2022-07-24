@@ -1,34 +1,34 @@
 [
-    {
-        "selector": "basic",
-        "id": "div.HwtpBd.gsrt.PZPZlf.kTOYnf",
-        "query": []
-    },
-    {
+  {
+    "selector": "basic",
+    "id": "div.HwtpBd.gsrt.PZPZlf.kTOYnf",
+    "query": []
+  },
+  {
     "selector": "basic2",
-        "id": "div.zCubwf",
-        "query": []
-    },
-    {
-        "selector": "weather",
-        "id": "div.vk_bk.TylWce",
-        "query": []
-    },
-    {
-        "selector": "define",
-        "id": "div.c8d6zd.xWMiCc.REww7c",
-        "query": []
-    },
-    {
-        "selector": "summary",
-        "id": "kno-rdesc",
-        "query": [],
-        "comment": "wikipedia result on right sidebar of google"
-    },
-    {
-        "selector": "snippet",
-        "id": "span.hgKElc",
-        "query": [],
-        "comment": "first result quickview from website"
-    }
+    "id": "div.zCubwf",
+    "query": []
+  },
+  {
+    "selector": "weather",
+    "id": "div.vk_bk.TylWce",
+    "query": []
+  },
+  {
+    "selector": "define",
+    "id": "div.c8d6zd.xWMiCc.REww7c",
+    "query": []
+  },
+  {
+    "selector": "summary",
+    "id": "kno-rdesc",
+    "query": [],
+    "comment": "wikipedia result on right sidebar of google"
+  },
+  {
+    "selector": "snippet",
+    "id": "span.hgKElc",
+    "query": [],
+    "comment": "first result quickview from website"
+  }
 ]

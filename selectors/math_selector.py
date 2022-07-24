@@ -1,5 +1,6 @@
-from .selector import Selector
 from bs4 import BeautifulSoup
+
+from .selector import Selector
 
 
 class MathSelector(Selector):

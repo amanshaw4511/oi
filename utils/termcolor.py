@@ -2,7 +2,7 @@ import sys
 from typing import Union
 
 
-class colors:
+class Colors:
     reset = '\033[0m'
     bold = '\033[01m'
     unbold = '\033[02m'
@@ -11,7 +11,7 @@ class colors:
     strikethrough = '\033[09m'
     invisible = '\033[08m'
 
-    class fg:
+    class Fg:
         black = '\033[30m'
         red = '\033[31m'
         green = '\033[32m'
@@ -28,7 +28,7 @@ class colors:
         pink = '\033[95m'
         lightcyan = '\033[96m'
 
-    class bg:
+    class Bg:
         black = '\033[40m'
         red = '\033[41m'
         green = '\033[42m'
@@ -39,11 +39,9 @@ class colors:
         lightgrey = '\033[47m'
 
 
-
-
 def colored(text: str, attr: Union[str, list[str]], reset=True) -> str:
     _attr = attr if isinstance(attr, list) else [attr]
-    reset_attr = colors.reset if reset else ""
+    reset_attr = Colors.reset if reset else ""
     return "+".join(_attr) + text + reset_attr
 
 
@@ -52,9 +50,8 @@ def cprint(text: str, attr: Union[str, list[str]], end="\n", file=sys.stdout):
 
 
 def red(text: str) -> str:
-    return colors.fg.red + text + colors.reset
+    return Colors.Fg.red + text + Colors.reset
 
 
 def bold(text: str) -> str:
-    return colors.bold + text + colors.unbold
-
+    return Colors.bold + text + Colors.unbold
