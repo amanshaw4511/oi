@@ -1,11 +1,4 @@
-"""
-Usage:
-    script_name.py [-a] [-b] <query>...
 
-Options:
-    -a            Print all the things.
-    -b            Get more bees into the path.
-"""
 from typing import Any, List, Type
 from docopt import docopt
 import requests
@@ -17,6 +10,7 @@ from selectors.math_selector import MathSelector
 from selectors.selector import Selector
 from selectors.site_list_selector import WebsiteResultSelector2
 from selectors.site_selector import WebsiteResultSelector
+from arg_parser import get_args
 
 
 def get_page(query: List[str]):
@@ -33,8 +27,7 @@ def get_page(query: List[str]):
 
 
 if __name__ == "__main__":
-    args = docopt(__doc__)
-    # import pprint; pprint.pprint(args)
+    args = get_args()
     doc = get_page(args['<query>'])
     print(doc.title)
 
