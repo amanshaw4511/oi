@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 
 
 class MathSelector(Selector):
+    name = "math"
+
     def __init__(self, doc: BeautifulSoup):
         self.selector = 'span.qv3Wpe'
         self.selected = doc.select(self.selector)

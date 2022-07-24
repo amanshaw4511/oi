@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 
 
 class Selector(metaclass=ABCMeta):
+    name = ""
+
     @abstractmethod
     def __init__(self, doc: BeautifulSoup):
         pass

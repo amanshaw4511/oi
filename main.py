@@ -1,4 +1,5 @@
-from typing import List, Mapping, Optional, Type
+import sys
+from typing import Iterable, List, Optional, Type, cast
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -11,6 +12,16 @@ from selectors.selector import Selector
 from selectors.site_list_selector import WebsiteResultSelector2
 from selectors.site_selector import WebsiteResultSelector
 from arg_parser.arg_parser import get_args
+from utils.list import find_any
+from utils.termcolor import red, bold
+
+selector_classes: List[Type[Selector]] = [
+        BasicSelector,
+        MathSelector,
+        CurrencySelector,
+        WebsiteResultSelector,
+        WebsiteResultSelector2
+    ]
 
 
 def get_page(query: List[str]):
@@ -25,38 +36,64 @@ def get_page(query: List[str]):
 
     return BeautifulSoup(response.content, 'html.parser')
 
-def print_availabe_selectors():
-    configs_json = json.loads(open('./config/config.json').read())
-    configs = map(Config, configs_json)
 
+def load_configs(config_path: str) -> Iterable[Config]:
+    config_json = open(config_path).read()
+    configs_dict = json.loads(config_json)
+    return map(lambda x : Config(x, selector_classes), configs_dict)
+
+
+def print_availabe_selectors(configs: Iterable[Config]):
     for config in configs:
         print(config.selector, end=' ')
 
     print()
 
 
+def print_output_from_selector(doc: BeautifulSoup, selector_name: str) -> bool:
+    selector_class = find_any(lambda clazz: clazz.name == selector_name, selector_classes)
+    if not selector_class:
+        print(red(f"Invalid selector name '{bold(selector_name)}'"), file=sys.stderr)
+        return False
+
+    selector_obj = selector_class(doc)
+    if selector_obj.found():
+        selector_obj.display()
+        return True
+    return False
+
+def print_output_from_any_matched_selector(doc: BeautifulSoup):
+    for selector_class in selector_classes:
+        selector_obj = selector_class(doc)
+        if selector_obj.found():
+            selector_obj.display()
+            return
+
+
+
 def main():
     args = get_args()
+
+    configs: Iterable[Config] = load_configs('./config/config.json')
+
     query: List[str] = args['<query>']
     selector_name: Optional[str] = args['--selector']
     list_selector: bool = args['--list-selectors']
-
-    if list_selector :
-        print_availabe_selectors()
-        return
-    
-
     doc = get_page(query)
-    # print(doc.title)
 
-    clazz: List[Type[Selector]] = [BasicSelector, MathSelector, CurrencySelector, WebsiteResultSelector,
-                                   WebsiteResultSelector2]
+    if list_selector:
+        print_availabe_selectors(configs)
+        return
 
-    for claz in clazz:
-        obj = claz(doc)
-        if obj.found():
-            obj.display()
+    if selector_name:
+        flag = print_output_from_selector(doc, selector_name)
+        if flag :
+            return
+
+    print_output_from_any_matched_selector(doc)
+
 
 
 if __name__ == "__main__":
     main()
+

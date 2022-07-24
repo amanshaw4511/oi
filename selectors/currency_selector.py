@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 
 
 class CurrencySelector(Selector):
+    name = "currency"
+
     def __init__(self, doc: BeautifulSoup) :
         self.selector = 'div.dDoNo.ikb4Bb.gsrt.GDBPqd'
         self.selected = doc.select(self.selector)

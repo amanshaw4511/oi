@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 
 
 class WebsiteResultSelector2(Selector):
+    name = "snippet2"
+
     def __init__(self, doc: BeautifulSoup):
         heading_selector = 'div.co8aDb'
         rows_selector = 'li.TrT0Xe'

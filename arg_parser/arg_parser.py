@@ -9,8 +9,8 @@ Options:
 """
 
 from docopt import docopt
+from typing import cast
 
 
 def get_args():
-    print(docopt(__doc__))
-    return docopt(__doc__)
+    return docopt(cast(str,__doc__))

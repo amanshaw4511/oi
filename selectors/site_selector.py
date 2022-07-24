@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 
 
 class WebsiteResultSelector(Selector):
+    name = "snippet1"
+
     def __init__(self, doc: BeautifulSoup):
         self.selector = 'div.hgKElc'
         self.selected = doc.select(self.selector)

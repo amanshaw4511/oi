@@ -1,14 +1,13 @@
-from typing import List
+from typing import Dict, List, Type, Any
+from selectors.selector import Selector
+from utils.list import find_any
 
 
 class Config :
-    selector: str
-    id: str
-    query: List[str]
-    comment: str
+    def __init__(self, _dict: Any, selector_classes: List[Type[Selector]]):
+        self.selector: str = _dict.get('selector')
+        self.id: str = _dict.get('id')
+        self.query: List[str] = _dict.get('query')
+        self.comment: str = _dict.get('comment')
+        self.clazz = find_any(lambda clazz: clazz.name == self.selector, selector_classes)
 
-    def __init__(self, _dict):
-        self.selector = _dict.get('selector')
-        self.id = _dict.get('id')
-        self.query = _dict.get('query')
-        self.comment = _dict.get('comment')
