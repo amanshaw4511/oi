@@ -8,7 +8,7 @@ from selectors.math_selector import MathSelector
 from selectors.selector import Selector
 from selectors.site_list_selector import WebsiteResultSelector2
 from selectors.site_selector import WebsiteResultSelector
-from arg_parser import get_args
+from arg_parser.arg_parser import get_args
 
 
 def get_page(query: List[str]):
