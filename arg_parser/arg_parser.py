@@ -1,6 +1,6 @@
 """
 Usage:
-    oi.py [-s SELECTOR] <query>...
+    oi.py [--selector SELECTOR] <query>...
     oi.py --list-selectors
 
 Options:

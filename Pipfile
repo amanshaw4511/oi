@@ -7,6 +7,7 @@ name = "pypi"
 docopt = "==0.6.2"
 requests = "*"
 beautifulsoup4 = "*"
+dataclasses-json = "*"
 
 [dev-packages]
 

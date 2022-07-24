@@ -1,6 +1,8 @@
-from typing import List, Type
+from typing import List, Mapping, Optional, Type
 import requests
 from bs4 import BeautifulSoup
+import json
+from config.config import Config
 
 from selectors.basic_selector import BasicSelector
 from selectors.currency_selector import CurrencySelector
@@ -23,19 +25,37 @@ def get_page(query: List[str]):
 
     return BeautifulSoup(response.content, 'html.parser')
 
+def print_availabe_selectors():
+    configs_json = json.loads(open('./config/config.json').read())
+    configs = map(Config, configs_json)
+
+    for config in configs:
+        print(config.selector, end=' ')
+
+    print()
+
 
 def main():
     args = get_args()
-    doc = get_page(args['<query>'])
+    query: List[str] = args['<query>']
+    selector_name: Optional[str] = args['--selector']
+    list_selector: bool = args['--list-selectors']
+
+    if list_selector :
+        print_availabe_selectors()
+        return
+    
+
+    doc = get_page(query)
     # print(doc.title)
 
     clazz: List[Type[Selector]] = [BasicSelector, MathSelector, CurrencySelector, WebsiteResultSelector,
                                    WebsiteResultSelector2]
 
     for claz in clazz:
-        selector = claz(doc)
-        if selector.found():
-            selector.display()
+        obj = claz(doc)
+        if obj.found():
+            obj.display()
 
 
 if __name__ == "__main__":
