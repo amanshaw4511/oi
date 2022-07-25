@@ -1,8 +1,8 @@
-from typing import List, Type, Any, cast
+from typing import List, Type, Any
 
 from bs4 import BeautifulSoup
 
-from selectors.selector import Selector
+from selectorss.selector import Selector
 from utils.list import find_any
 
 

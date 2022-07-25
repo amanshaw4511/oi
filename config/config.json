@@ -2,12 +2,14 @@
   {
     "selector": "basic",
     "id": "a.FLP8od",
-    "query": []
+    "query": [],
+    "comment": ""
   },
   {
     "selector": "currency",
-    "id" : "div.dDoNo.ikb4Bb.gsrt.GDBPqd",
-    "query": []
+    "id": "div.dDoNo.ikb4Bb.gsrt.GDBPqd",
+    "query": [],
+    "comment": ""
   },
   {
     "selector": "math",
@@ -18,11 +20,13 @@
   {
     "selector": "snippet1",
     "id": "div.hgKElc",
-    "query": []
+    "query": [],
+    "comment": ""
   },
   {
     "selector": "snippet2",
     "id": "div.co8aDb",
-    "query": []
+    "query": [],
+    "comment": ""
   }
 ]

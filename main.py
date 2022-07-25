@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from typing import Iterable, List, Optional, Type
 
@@ -7,7 +8,7 @@ from bs4 import BeautifulSoup
 
 from arg_parser.arg_parser import get_args
 from config.config import Config
-from selectors.selector import Selector
+from selectorss.selector import Selector
 from utils.list import find_any
 from utils.termcolor import red, bold
 
@@ -63,7 +64,7 @@ def print_output_from_any_matched_selector(configs: Iterable[Config]):
 
 
 def main():
-    from selectors.selector_list import selector_classes
+    from selectorss.selector_list import selector_classes
     args = get_args()
 
     query: List[str] = args['<query>']
@@ -72,7 +73,8 @@ def main():
 
     doc = get_page(query)
 
-    configs: Iterable[Config] = load_configs('./config/config.json', doc, selector_classes)
+    config_path = os.path.join(os.path.split(__file__)[0], "config", "config.json")
+    configs: Iterable[Config] = load_configs(config_path, doc, selector_classes)
 
     if list_selector:
         print_available_selectors(configs)
