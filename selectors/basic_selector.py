@@ -6,8 +6,8 @@ from .selector import Selector
 class BasicSelector(Selector):
     name = "basic"
 
-    def __init__(self, doc: BeautifulSoup):
-        self.selector = '.FLP8od'
+    def __init__(self, doc: BeautifulSoup, selector_id: str):
+        self.selector = selector_id
         self.selected = doc.select(self.selector)
 
     def display(self):

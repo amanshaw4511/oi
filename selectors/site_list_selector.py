@@ -6,8 +6,8 @@ from .selector import Selector
 class WebsiteResultSelector2(Selector):
     name = "snippet2"
 
-    def __init__(self, doc: BeautifulSoup):
-        heading_selector = 'div.co8aDb'
+    def __init__(self, doc: BeautifulSoup, selector_id: str):
+        heading_selector = selector_id
         rows_selector = 'li.TrT0Xe'
         self.heading = doc.select(heading_selector)
         self.rows = doc.select(rows_selector)

@@ -1,34 +1,28 @@
 [
   {
     "selector": "basic",
-    "id": "div.HwtpBd.gsrt.PZPZlf.kTOYnf",
+    "id": "a.FLP8od",
     "query": []
   },
   {
-    "selector": "basic2",
-    "id": "div.zCubwf",
+    "selector": "currency",
+    "id" : "div.dDoNo.ikb4Bb.gsrt.GDBPqd",
     "query": []
   },
   {
-    "selector": "weather",
-    "id": "div.vk_bk.TylWce",
-    "query": []
-  },
-  {
-    "selector": "define",
-    "id": "div.c8d6zd.xWMiCc.REww7c",
-    "query": []
-  },
-  {
-    "selector": "summary",
-    "id": "kno-rdesc",
+    "selector": "math",
+    "id": "span.qv3Wpe",
     "query": [],
-    "comment": "wikipedia result on right sidebar of google"
+    "comment": ""
   },
   {
-    "selector": "snippet",
-    "id": "span.hgKElc",
-    "query": [],
-    "comment": "first result quickview from website"
+    "selector": "snippet1",
+    "id": "div.hgKElc",
+    "query": []
+  },
+  {
+    "selector": "snippet2",
+    "id": "div.co8aDb",
+    "query": []
   }
 ]
